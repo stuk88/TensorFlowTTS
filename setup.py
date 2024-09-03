@@ -71,7 +71,7 @@ extras_require = {
 
 dirname = os.path.dirname(__file__)
 setup(
-    name="TensorFlowTTS",
+    name="tensorflow_tts",
     version="1.9",
     url="https://github.com/tensorspeech/TensorFlowTTS",
     author="Minh Nguyen Quan Anh, Alejandro Miguel Velasquez, Dawid Kobus, Eren Gölge, Kuan Chen, Takuya Ebata, Trinh Le Quang, Yunchao He",
