@@ -1,22 +1,14 @@
-"""Setup Tensorflow TTS libarary."""
+"""Setup Tensorflow TTS library."""
 
 import os
 import sys
-from distutils.version import LooseVersion
+from packaging.version import Version
 
-import pip
 from setuptools import find_packages, setup
 
-if LooseVersion(sys.version) < LooseVersion("3.6"):
+if Version(sys.version) < Version("3.6"):
     raise RuntimeError(
-        "TensorFlow TTS requires python >= 3.6, "
-        "but your Python version is {}".format(sys.version)
-    )
-
-if LooseVersion(pip.__version__) < LooseVersion("19"):
-    raise RuntimeError(
-        "pip>=19.0.0 is required, but your pip version is {}. "
-        'Try again after "pip install -U pip"'.format(pip.__version__)
+        f"TensorFlow TTS requires Python >= 3.6, but your Python version is {sys.version}"
     )
 
 # TODO(@dathudeptrai) update requirement if needed.
@@ -43,10 +35,10 @@ requirements = {
         "textgrid",
         "click",
         "g2p_en",
-        "dataclasses",
+        "dataclasses; python_version<'3.7'",
         "pyopenjtalk",
     ],
-    "setup": ["numpy", "pytest-runner",],
+    "setup": ["numpy", "pytest-runner"],
     "test": [
         "pytest>=3.3.0",
         "hacking>=1.1.0",
@@ -64,7 +56,6 @@ entry_points = {
 
 install_requires = requirements["install"]
 setup_requires = requirements["setup"]
-tests_require = requirements["test"]
 extras_require = {
     k: v for k, v in requirements.items() if k not in ["install", "setup"]
 }
@@ -83,13 +74,15 @@ setup(
     packages=find_packages(include=["tensorflow_tts*"]),
     install_requires=install_requires,
     setup_requires=setup_requires,
-    tests_require=tests_require,
     extras_require=extras_require,
     entry_points=entry_points,
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Intended Audience :: Science/Research",
         "Operating System :: POSIX :: Linux",
         "License :: OSI Approved :: Apache Software License",
