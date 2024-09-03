@@ -19,8 +19,6 @@ import warnings
 import os
 import copy
 
-from tensorflow.keras.layers import AbstractRNNCell
-
 from collections import OrderedDict
 
 from tensorflow_tts.configs import (
